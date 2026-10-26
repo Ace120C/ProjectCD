@@ -36,17 +36,32 @@ int main()
   
   // Variables
   Texture2D store_tile = LoadTexture("../assets/map/store/store_tile.png");
-  int TilePosX = 0;
-  int TilePosY = 0;
+  Texture2D store_table = LoadTexture("../assets/map/store/store-table.png");
+  Texture2D monitor = LoadTexture("../assets/map/store/Monitor.png");
+  Texture2D mouse = LoadTexture("../assets/map/store/mouse.png");
+  int PosX = 0;
+  int PosY = 0;
 
   while (!WindowShouldClose()) {
+    int TableCount = 0;
+
     BeginTextureMode(target);
     ClearBackground(BLACK);
-    for (TilePosX = 0; TilePosX < GAME_WIDTH; TilePosX += 16) {
-      for (TilePosY = 0; TilePosY < GAME_HEIGHT; TilePosY += 16) {
-        DrawTexture(store_tile, TilePosX, TilePosY, RAYWHITE);
+    for (PosX = 0; PosX < GAME_WIDTH; PosX += 16) {
+      for (PosY = 0; PosY < GAME_HEIGHT; PosY += 16) {
+        DrawTexture(store_tile, PosX, PosY, RAYWHITE);
       }
     }
+    for (PosX = 45; PosX < GAME_WIDTH; PosX += 145) {
+      for (PosY = 150;PosY < GAME_HEIGHT; PosY += 50) {
+        if (TableCount < 5 && PosY <= 200) {
+          DrawTexture(store_table, PosX, PosY, RAYWHITE);
+          TableCount++;
+        }
+      }
+    }
+    DrawTexture(monitor, 65, 130, RAYWHITE);
+    DrawTexture(mouse, 100, 155, RAYWHITE);
     EndTextureMode();
 
     BeginDrawing();
@@ -56,5 +71,8 @@ int main()
   }
   UnloadRenderTexture(target);
   UnloadTexture(store_tile);
+  UnloadTexture(store_table);
+  UnloadTexture(monitor);
+  UnloadTexture(mouse);
   return 0;
 }
