@@ -39,6 +39,8 @@ int main()
   Texture2D store_table = LoadTexture("../assets/map/store/store-table.png");
   Texture2D monitor = LoadTexture("../assets/map/store/Monitor.png");
   Texture2D mouse = LoadTexture("../assets/map/store/mouse.png");
+  Texture2D laptop = LoadTexture("../assets/map/store/laptop.png");
+  Texture2D store_walls = LoadTexture("../assets/map/store/store-walls.png");
   int PosX = 0;
   int PosY = 0;
 
@@ -62,6 +64,12 @@ int main()
     }
     DrawTexture(monitor, 65, 130, RAYWHITE);
     DrawTexture(mouse, 100, 155, RAYWHITE);
+    DrawTexture(laptop, 70, 185, RAYWHITE);
+
+    DrawTexture(monitor, 210, 130, RAYWHITE);
+    DrawTexture(mouse, 245, 155, RAYWHITE);
+    DrawTexture(laptop, 215, 185, RAYWHITE);
+    DrawTexture(store_walls, 0, 0, RAYWHITE);
     EndTextureMode();
 
     BeginDrawing();
@@ -74,5 +82,7 @@ int main()
   UnloadTexture(store_table);
   UnloadTexture(monitor);
   UnloadTexture(mouse);
+  UnloadTexture(laptop);
+  UnloadTexture(store_walls);
   return 0;
 }
